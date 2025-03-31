@@ -9,7 +9,7 @@ document.getElementById('footprintForm').addEventListener('submit', async functi
   const carbonOutput = document.getElementById('carbonOutput');
 
   try {
-    const response = await fetch('http://localhost:5000/api/carbon/electricity', {
+    const response = await fetch('https://ibm-final.onrender.com/api/carbon/electricity', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
