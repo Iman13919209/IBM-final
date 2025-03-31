@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Goals & Badges</title>
+    <link rel="icon" type="image/x-icon" href="assets/logo-removebg-preview.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="index1.css">
+    <style>
+        :root {
+            --primary-color: #2ecc71;
+            --secondary-color: #27ae60;
+            --background: #1a1a1a;
+            --card-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: var(--background);
+            color: white;
+            /* padding: 2rem; */
+        }
+
+        .goals-container {
+            max-width: 1200px;
+            margin: 30px auto;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            width: 0;
+            transition: width 0.5s ease;
+        }
+
+        /* Goals Section */
+        .goal-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .goal-input, .goal-type, .goal-date {
+            padding: 0.8rem;
+            border: none;
+            border-radius: 8px;
+            background: var(--card-bg);
+            color: white;
+        }
+
+        .add-goal-btn {
+            background: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            padding: 0 1.5rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .add-goal-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .goals-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .goal-item {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.2s;
+            backdrop-filter: blur(5px);
+        }
+
+        .goal-item:hover {
+            transform: translateX(10px);
+        }
+
+        .goal-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .complete-btn, .delete-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .complete-btn {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        /* Badges Section */
+        .badges-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .badge {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: var(--card-bg);
+            transition: all 0.3s ease;
+            opacity: 0.3;
+        }
+
+        .badge.unlocked {
+            opacity: 1;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+        }
+
+        .badge i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Achievement Animation */
+        @keyframes celebrate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .achievement-popup {
+            position: fixed;
+            top: 20px;
+            right: -300px;
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: right 0.5s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .achievement-popup.show {
+            right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav">
+                <div class="logo">
+                    <img class="img-fluid" src="assets/logo-removebg-preview.png" alt="">
+                </div>
+                <div class="search-box">
+                    <input type="search" placeholder="Search">
+                    <img src="assets/download magnifying.png" alt="">
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="afterlogin.html">Home</a></li>
+                        <li><a href="calculate.html">Calculator</a></li>
+                        <li><a href="aboutUs.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="newslatter.html">Newsletter</a></li>
+                        <li><a href="activity.html">Activity</a></li>
+                    </ul>
+                </div>
+                <!-- <div class="btn-group">
+                    <a href="sign_in.html" class="primary-btn">Sign in</a>
+                </div> -->
+            </div>
+        </div>
+    </header>
+    <div class="goals-container">
+        <div class="progress-container">
+            <h2>Carbon Reduction Progress</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+        </div>
+
+        <form class="goal-form" id="goalForm">
+            <input type="text" class="goal-input" id="goalTitle" placeholder="Goal title" required>
+            <select class="goal-type" id="goalType">
+                <option value="carbon">Carbon Reduction</option>
+                <option value="energy">Energy Saving</option>
+                <option value="transport">Transport</option>
+                <option value="diet">Diet</option>
+            </select>
+            <input type="date" class="goal-date" id="goalDate" required>
+            <button type="submit" class="add-goal-btn">Add Goal</button>
+        </form>
+
+        <div class="goals-list" id="goalsList"></div>
+
+        <div class="badges-container" id="badgesContainer">
+            <!-- Badges will be added dynamically -->
+        </div>
+
+        <div class="achievement-popup" id="achievementPopup">
+            <i class="fas fa-trophy"></i>
+            <div>
+                <h3>New Achievement Unlocked!</h3>
+                <p id="achievementText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize local storage
+        let goals = JSON.parse(localStorage.getItem('goals')) || [];
+        let badges = JSON.parse(localStorage.getItem('badges')) || [];
+        let totalCompleted = parseInt(localStorage.getItem('totalCompleted')) || 0;
+
+        // Badge configuration
+        const badgeConfig = [
+            { id: 'bronze', name: 'Bronze Saver', required: 3, icon: 'leaf' },
+            { id: 'silver', name: 'Silver Guardian', required: 5, icon: 'tree' },
+            { id: 'gold', name: 'Gold Eco Warrior', required: 10, icon: 'earth' },
+            { id: 'carbon', name: 'Carbon Crusher', required: 5, type: 'carbon', icon: 'cloud' },
+            { id: 'energy', name: 'Energy Master', required: 5, type: 'energy', icon: 'bolt' }
+        ];
+
+        // Initialize app
+        function init() {
+            renderGoals();
+            renderBadges();
+            updateProgress();
+        }
+
+        // Form submission
+        document.getElementById('goalForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newGoal = {
+                id: Date.now(),
+                title: document.getElementById('goalTitle').value,
+                type: document.getElementById('goalType').value,
+                date: document.getElementById('goalDate').value,
+                completed: false
+            };
+            goals.push(newGoal);
+            saveData();
+            renderGoals();
+            e.target.reset();
+        });
+
+        // Render goals
+        function renderGoals() {
+            const goalsList = document.getElementById('goalsList');
+            goalsList.innerHTML = goals.map(goal => `
+                <div class="goal-item ${goal.completed ? 'completed' : ''}">
+                    <div>
+                        <h3>${goal.title}</h3>
+                        <p>Type: ${goal.type} | Due: ${goal.date}</p>
+                    </div>
+                    <div class="goal-actions">
+                        <button onclick="toggleComplete(${goal.id})" class="complete-btn">
+                            ${goal.completed ? 'Undo' : 'Complete'}
+                        </button>
+                        <button onclick="deleteGoal(${goal.id})" class="delete-btn">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Toggle goal completion
+        function toggleComplete(id) {
+            const goal = goals.find(g => g.id === id);
+            goal.completed = !goal.completed;
+            totalCompleted += goal.completed ? 1 : -1;
+            checkBadges();
+            saveData();
+            updateProgress();
+            renderGoals();
+        }
+
+        // Delete goal
+        function deleteGoal(id) {
+            goals = goals.filter(g => g.id !== id);
+            saveData();
+            renderGoals();
+        }
+
+        // Update progress bar
+        function updateProgress() {
+            const totalGoals = goals.length;
+            const progress = totalGoals > 0 ? (totalCompleted / totalGoals) * 100 : 0;
+            document.getElementById('progress').style.width = `${progress}%`;
+        }
+
+        // Badge system
+        function checkBadges() {
+            badgeConfig.forEach(badge => {
+                const hasBadge = badges.includes(badge.id);
+                const count = badge.type ? 
+                    goals.filter(g => g.type === badge.type && g.completed).length :
+                    totalCompleted;
+                
+                if (!hasBadge && count >= badge.required) {
+                    badges.push(badge.id);
+                    showAchievement(badge.name);
+                }
+            });
+            renderBadges();
+            saveData();
+        }
+
+        // Render badges
+        function renderBadges() {
+            const container = document.getElementById('badgesContainer');
+            container.innerHTML = badgeConfig.map(badge => `
+                <div class="badge ${badges.includes(badge.id) ? 'unlocked' : ''}">
+                    <i class="fas fa-${badge.icon}"></i>
+                    <h4>${badge.name}</h4>
+                    <small>${badge.required} ${badge.type ? `${badge.type} goals` : 'completed'}</small>
+                </div>
+            `).join('');
+        }
+
+        // Show achievement popup
+        function showAchievement(name) {
+            const popup = document.getElementById('achievementPopup');
+            document.getElementById('achievementText').textContent = name;
+            popup.classList.add('show');
+            setTimeout(() => popup.classList.remove('show'), 3000);
+        }
+
+        // Save data to local storage
+        function saveData() {
+            localStorage.setItem('goals', JSON.stringify(goals));
+            localStorage.setItem('badges', JSON.stringify(badges));
+            localStorage.setItem('totalCompleted', totalCompleted);
+        }
+
+        // Initialize the app
+        init();
+    </script>
+</body>
+</html>

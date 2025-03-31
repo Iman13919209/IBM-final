@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecotrack signin</title>
+    <link rel="icon" type="image/x-icon" href="assets/logo-removebg-preview.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="nav">
+                <div class="logo">
+                    <img class="img-fluid" src="assets/logo-removebg-preview.png" alt="">
+                </div>
+                <div class="search-box">
+                    <input type="search" placeholder="Search">
+                    <img src="assets/download magnifying.png" alt="">
+                </div>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <!-- <li><a href="calculate.html">Calculator</a></li>
+                        <li><a href="aboutUs.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="newslatter.html">Newsletter</a></li> -->
+                    </ul>
+                </div>
+                <!-- <div class="btn-group">
+                    <a href="sign_in.html" class="primary-btn">Sign in</a>
+                </div> -->
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <video autoplay loop muted src="assets/hero-bg.mp4" class="bg-vid"></video>
+            <div class="signin" method="POST">
+                <h2>Sign Up</h2>
+                <form id="signUpForm" class="form">
+                    <div class="form-group">
+                        <label for="username">Username:</label><br>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="password" required>
+                    </div>
+                
+                    <div class="btn-group">
+                        <button class="primary-btn" type="submit">Sign Up</button>
+                    </div>
+                    
+                </form>
+                <div class="footer-links">
+                    <p>Already have an account? <a href="login.html">Log in</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+    
+        <div class="top">
+            <img src="assets/logo-removebg-preview.png" alt="logo">
+        </div>
+        <div class="middle">
+            <div class="card">
+                <h3>Product</h3>
+                <p>Features</p>
+                <p>Pricing</p>
+            </div>
+            <div class="card">
+                <h3>Resource</h3>
+                <p>Blog</p>
+                <p>User Guides</p>
+                <p>Webiners</p>
+            </div>
+            <div class="card">
+                <h3>Company</h3>
+                <p><a href="aboutUs.html">About Us</a></p>
+                <p><a href="contact.html">Contact Us</a></p>
+            </div>
+            <div class="card">
+                <h3>Plans & Pricing</h3>
+                <p>Personal</p>
+                <p>Start Up</p>
+                <p>Organization</p>
+            </div>
+        </div>
+        <div class="down">
+            <p>© 2025 All Rights Reserved.</p>
+            <ul>
+                <li><a href="https://www.facebook.com/kalyan.bhunia.52"><img src="assets/facebook.jpeg" alt="facebook"></a></li>
+                <li><a href="https://x.com/ImanKalyan5"><img src="assets/twitter.png" alt="twitter"></a></li>
+                <li><a href="https://www.instagram.com/_i_am_iman_45/"><img src="assets/instagram.jpeg" alt="instagram"></a></li>
+            </ul>
+
+
+        </div>
+   </footer>
+</body>
+</html>
+<script src="index.js"></script>
+<script src="auth.js"></script>

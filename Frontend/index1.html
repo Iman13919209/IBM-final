@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ecotrack calculate carbon footprint</title>
+    <link rel="icon" type="image/x-icon" href="assets/logo-removebg-preview.png">
+  <link rel="stylesheet" href="index1.css">
+  <link rel="icon" type="image/x-icon" href="assets/logo-removebg-preview.png">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- <link rel="stylesheet" href="index.css"> -->
+</head>
+<body>
+  <header>
+    <div class="container">
+        <div class="nav">
+            <div class="logo">
+                <img class="img-fluid" src="assets/logo-removebg-preview.png" alt="">
+            </div>
+            <div class="search-box">
+                <input type="search" placeholder="Search">
+                <img src="assets/download magnifying.png" alt="">
+            </div>
+            <div class="nav-links">
+                <ul>
+                    <li><a href="afterlogin.html">Home</a></li>
+                    <li><a href="calculate.html">Calculator</a></li>
+                    <li><a href="aboutUs.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="newslatter.html">Newsletter</a></li>
+                </ul>
+            </div>
+            <!-- <div class="btn-group">
+                <a href="sign_in.html" class="primary-btn">Sign in</a>
+            </div> -->
+        </div>
+    </div>
+</header>
+    <div class="container1">
+      
+        <!-- Form Section -->
+        <form id="footprintForm">
+          <h2>How much Electricity is consumed in your house monthly?</h2><br>
+          <label>Electricity (kWh/unit):</label>
+          <input type="number" id="electricityKWh" placeholder="Enter kWh/unit" />
+          <button type="submit">Calculate</button><br>
+          <h3 id="carbonOutput">Carbon Footprint: -- kg CO₂</h3> 
+        </form>
+    
+        <!-- Chart Section -->
+        <div class="chart-container">
+          <canvas id="carbonChart"></canvas>
+        </div>
+        
+    </div>
+    <div>
+      <div class="btn-group">
+        <div>
+          <button type="button" id="nextBtn1" onclick="window.location.href='veichle.html'">Next</button>
+        </div>
+      </div>
+        
+    </div>
+    <footer>
+    
+      <div class="top">
+          <img src="assets/logo-removebg-preview.png" alt="logo">
+      </div>
+      <div class="middle">
+          <div class="card">
+              <h3>Product</h3>
+              <p>Features</p>
+              <p>Pricing</p>
+          </div>
+          <div class="card">
+              <h3>Resource</h3>
+              <p>Blog</p>
+              <p>User Guides</p>
+              <p>Webiners</p>
+          </div>
+          <div class="card">
+              <h3>Company</h3>
+              <p><a href="aboutUs.html">About Us</a></p>
+              <p><a href="contact.html">Contact Us</a></p>
+          </div>
+          <div class="card">
+              <h3>Plans & Pricing</h3>
+              <p>Personal</p>
+              <p>Start Up</p>
+              <p>Organization</p>
+          </div>
+      </div>
+      <div class="down">
+          <p>© 2025 All Rights Reserved.</p>
+          <ul>
+              <li><a href="https://www.facebook.com/kalyan.bhunia.52"><img src="assets/facebook.jpeg" alt="facebook"></a></li>
+              <li><a href="https://x.com/ImanKalyan5"><img src="assets/twitter.png" alt="twitter"></a></li>
+              <li><a href="https://www.instagram.com/_i_am_iman_45/"><img src="assets/instagram.jpeg" alt="instagram"></a></li>
+          </ul>
+
+
+      </div>
+ </footer>
+
+
+    
+    <script src="index1.js"></script> 
+    <script src="chart.js"></script>
+</body>
+</html>

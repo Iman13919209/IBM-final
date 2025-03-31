@@ -1,0 +1,53 @@
+//require('dotenv').config();
+
+const { CarbonFootprint } = require("../Backend/model/CarbonSchema");
+
+// For Node.js v18+, fetch is globally available. 
+// If using older Node.js, uncomment the next line and install node-fetch
+// const fetch = require('node-fetch');
+
+const getCarbonFootprint = async (req, res) => {
+  const { electricity_value, country, state } = req.body;
+
+  const data = {
+    type: "electricity",
+    electricity_unit: "mwh",
+    electricity_value,
+    country,
+    state,
+  };
+
+  try {
+    const response = await fetch('https://www.carboninterface.com/api/v1/estimates', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.CARBON_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Failed to fetch from Carbon Interface');
+    }
+
+    const responseData = await response.json();
+    const carbon_mt = responseData.data.attributes.carbon_mt;
+
+    // Save to DB (optional)
+    const saved = await CarbonFootprint.create({
+      electricity_value,
+      carbon_mt,
+      country,
+      state,
+    });
+
+    res.status(200).json({ carbon_kg: carbon_mt * 1000 }); // Convert to kg CO₂
+  } catch (err) {
+    console.error('API Error:', err.message);
+    res.status(500).json({ error: 'Carbon Interface API failed' });
+  }
+};
+
+module.exports = { getCarbonFootprint };
