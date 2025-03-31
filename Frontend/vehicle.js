@@ -5,7 +5,7 @@ document.getElementById('vehicleForm').addEventListener('submit', async function
     const modelId = document.getElementById('vehicleModelId').value;
   
     try {
-      const res = await fetch('http://localhost:5000/api/carbon/vehicle', {
+      const res = await fetch('https://ibm-final.onrender.com/api/carbon/vehicle', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ distance_value: distance, vehicle_model_id: modelId })
