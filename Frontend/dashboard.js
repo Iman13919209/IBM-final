@@ -86,9 +86,9 @@
 async function fetchCarbonData() {
     try {
         // Fetch all carbon footprint data
-        const electricityRes = await fetch('http://localhost:5000/api/carbondata');
-        const flightRes = await fetch('http://localhost:5000/api/carbondata1');
-        const vehicleRes = await fetch('http://localhost:5000/api/carbondata2');
+        const electricityRes = await fetch('https://ibm-final.onrender.com/api/carbondata');
+        const flightRes = await fetch('https://ibm-final.onrender.com/api/carbondata1');
+        const vehicleRes = await fetch('https://ibm-final.onrender.com/api/carbondata2');
 
         const electricityData = await electricityRes.json();
         const flightData = await flightRes.json();
